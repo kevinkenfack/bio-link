@@ -5,9 +5,9 @@ import {
   Globe, ExternalLink 
 } from 'lucide-react';
 
-const NeoBiolink = () => {
-  const [hoveredLink, setHoveredLink] = useState(null);
-  const [activeSection, setActiveSection] = useState('profile');
+const NeoBiolink: React.FC = () => {
+  const [hoveredLink, setHoveredLink] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('profile');
 
   const socialLinks = [
     { 
@@ -101,7 +101,7 @@ const NeoBiolink = () => {
       <div className="w-full max-w-md bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700 overflow-hidden relative z-10">
         {/* Navigation */}
         <div className="flex border-b border-gray-700">
-          {['Profil', 'Portfolio', 'Contact'].map((section, index) => (
+          {['Profil', 'Portfolio', 'Contact'].map((section) => (
             <button
               key={section}
               className={`
