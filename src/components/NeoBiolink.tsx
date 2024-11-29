@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { 
   Github, Linkedin, Twitter, Instagram, Coffee, 
-  Mail, WhatsApp, Briefcase, Link as LinkIcon, 
+  Mail, FaWhatsapp, Briefcase, Link as LinkIcon, 
   Globe, ExternalLink 
-} from 'lucide-react';
+} from 'react-icons/fa';  // Import de FaWhatsapp depuis react-icons
 
 const NeoBiolink: React.FC = () => {
   const [hoveredLink, setHoveredLink] = useState<number | null>(null);
@@ -71,7 +71,7 @@ const NeoBiolink: React.FC = () => {
       color: 'from-purple-400 to-pink-500'
     },
     {
-      icon: WhatsApp,
+      icon: FaWhatsapp,  // Utilisation de FaWhatsapp de react-icons
       label: 'WhatsApp',
       url: 'https://wa.me/VOTRENUMÉRO',
       color: 'from-green-400 to-emerald-600'
@@ -109,8 +109,7 @@ const NeoBiolink: React.FC = () => {
                 transition-all duration-300
                 ${activeSection === section.toLowerCase() 
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' 
-                  : 'text-gray-400 hover:bg-gray-700'}
-              `}
+                  : 'text-gray-400 hover:bg-gray-700'}`}
               onClick={() => setActiveSection(section.toLowerCase())}
             >
               {section}
@@ -157,8 +156,8 @@ const NeoBiolink: React.FC = () => {
                       onMouseLeave={() => setHoveredLink(null)}
                     >
                       <Icon className={`mr-3 transition-transform duration-300 
-                        ${hoveredLink === index ? 'rotate-12 scale-110' : ''}
-                      `} />
+                        ${hoveredLink === index ? 'rotate-12 scale-110' : ''}`}
+                      />
                       {link.label}
                     </a>
                   );
@@ -181,13 +180,11 @@ const NeoBiolink: React.FC = () => {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="
-                        block bg-gray-700/50 rounded-xl p-4 
-                        flex items-center 
-                        transform transition-all duration-300
-                        hover:bg-gray-700/70 hover:scale-105
-                        group
-                      "
+                      className="block bg-gray-700/50 rounded-xl p-4 
+                                 flex items-center 
+                                 transform transition-all duration-300
+                                 hover:bg-gray-700/70 hover:scale-105
+                                 group"
                     >
                       <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-3 rounded-lg mr-4">
                         <Icon className="text-white" />
@@ -216,18 +213,16 @@ const NeoBiolink: React.FC = () => {
                     <a 
                       key={index}
                       href={option.url}
-                      className={`
-                        block w-full p-3 text-center 
-                        rounded-xl 
-                        bg-gradient-to-r ${option.color}
-                        text-white
-                        font-semibold
-                        transform transition-all duration-300
-                        hover:scale-105 hover:shadow-xl
-                        flex items-center justify-center
-                        relative overflow-hidden
-                        group
-                      `}
+                      className={`block w-full p-3 text-center 
+                                 rounded-xl 
+                                 bg-gradient-to-r ${option.color}
+                                 text-white
+                                 font-semibold
+                                 transform transition-all duration-300
+                                 hover:scale-105 hover:shadow-xl
+                                 flex items-center justify-center
+                                 relative overflow-hidden
+                                 group`}
                     >
                       <Icon className="mr-3 transition-transform duration-300 group-hover:rotate-12" />
                       {option.label}
