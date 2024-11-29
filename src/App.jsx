@@ -1,7 +1,11 @@
-import NeoBiolink from './components/NeoBiolink'
+import NeoBiolink from './components/NeoBiolink';
 
 function App() {
-  return <NeoBiolink />
+  return (
+    <div className="App">
+      <NeoBiolink />
+    </div>
+  );
 }
 
-export default App
+export default App;
