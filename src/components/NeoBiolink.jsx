@@ -49,7 +49,7 @@ const NeoBiolink = () => {
     {
       icon: MailIcon,
       label: 'E-mail',
-      url: 'mailto:votre.email@example.com',
+      url: 'mailto:kevinkenfackjoel@gmail.com',
       color: 'from-purple-400 to-pink-500'
     }
   ];
@@ -155,11 +155,11 @@ const NeoBiolink = () => {
           {activeSection === 'profil' && (
             <div className="text-center">
               <img 
-                src="/api/placeholder/150/150"
+                src="/profile.jpeg"
                 alt="Profile"
                 className="mx-auto w-32 h-32 rounded-full border-4 border-white shadow-lg mb-4 transition-all duration-300 hover:scale-110 hover:rotate-6"
               />
-              <h1 className="text-3xl font-bold text-white mb-2">Développeur Pro</h1>
+              <h1 className="text-3xl font-bold text-white mb-2">Kevin Kenfack</h1>
               <p className="text-gray-300 mb-6">Création de solutions web innovantes</p>
               <div className="space-y-4">
                 {socialLinks.map(renderSocialLink)}
