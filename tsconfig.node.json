@@ -1,22 +1,29 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ES2023"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "composite": true,
+    "target": "ES2022",                        // Version cible de JS
+    "lib": ["ES2023", "DOM"],                 // Inclut ES2023 + API DOM pour React
+    "module": "ESNext",                       // Gestion des modules modernes
+    "skipLibCheck": true,                     // Ignore la vérification des types dans les dépendances
+    "composite": true,                        // Nécessaire si ce fichier est utilisé dans un projet référencé
+    "moduleResolution": "bundler",           // Pour des outils comme Vite
+    "allowImportingTsExtensions": true,       // Permet d'importer des fichiers .ts/.tsx
+    "isolatedModules": true,                  // Nécessaire pour les builds incrémentaux
+    "moduleDetection": "force",               // Force la détection des modules
+    "emitDeclarationOnly": true,              // Émet uniquement des déclarations TypeScript
 
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    /* Vérifications de qualité */
+    "strict": true,                           // Active les vérifications strictes
+    "noUnusedLocals": true,                   // Empêche les variables inutilisées
+    "noUnusedParameters": true,               // Empêche les paramètres inutilisés
+    "noFallthroughCasesInSwitch": true,       // Empêche les erreurs dans switch/case
+    "noEmit": true,                           // Désactive l'émission de fichiers JS lors de la compilation
+    "resolveJsonModule": true,                // Permet l'importation de fichiers JSON
+    "jsx": "react-jsx"                        // Configure JSX pour React
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",                           // Inclut tous les fichiers TypeScript dans src
+    "vite.config.ts"                          // Ajoute la configuration Vite si nécessaire
+  ],
+  "exclude": ["node_modules", "dist"]         // Exclut les modules et les fichiers compilés
 }
