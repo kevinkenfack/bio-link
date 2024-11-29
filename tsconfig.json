@@ -12,9 +12,11 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",  // Indique que vous utilisez React avec JSX
+    "noEmit": false  // Assurez-vous que TypeScript génère des fichiers JS
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],  // Indique les dossiers ou fichiers à inclure dans la compilation
+  "references": [
+    { "path": "./tsconfig.node.json" }
+  ]
 }
