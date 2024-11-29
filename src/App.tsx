@@ -1,7 +1,7 @@
 import React from 'react'
 import NeoBiolink from './components/NeoBiolink'
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <NeoBiolink />

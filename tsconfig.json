@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
@@ -12,11 +11,8 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",  // Indique que vous utilisez React avec JSX
-    "noEmit": false  // Assurez-vous que TypeScript génère des fichiers JS
+    "noEmit": false,  // Pour générer des fichiers JS
+    "jsx": "react-jsx"
   },
-  "include": ["src"],  // Indique les dossiers ou fichiers à inclure dans la compilation
-  "references": [
-    { "path": "./tsconfig.node.json" }
-  ]
+  "include": ["src/**/*"]  // Assurez-vous que tous vos fichiers TS/TSX sont inclus ici
 }
