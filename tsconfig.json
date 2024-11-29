@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "target": "ES2020"
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM"],
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true
   },
-  "include": ["src/node/**/*"]
+  "include": ["src/**/*"], // Vérifiez que tous vos fichiers TypeScript sont inclus
+  "exclude": ["node_modules", "dist"]
 }
