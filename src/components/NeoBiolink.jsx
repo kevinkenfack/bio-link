@@ -18,30 +18,31 @@ const NeoBiolink = () => {
   const [activeSection, setActiveSection] = useState('profil');
 
   const socialLinks = [
-    { icon: GithubIcon, url: '#', label: 'GitHub', color: 'from-green-400 to-green-600' },
-    { icon: LinkedinIcon, url: '#', label: 'LinkedIn', color: 'from-blue-400 to-blue-600' },
-    { icon: TwitterIcon, url: '#', label: 'Twitter', color: 'from-cyan-400 to-cyan-600' },
-    { icon: InstagramIcon, url: '#', label: 'Instagram', color: 'from-pink-400 to-pink-600' },
-    { icon: CoffeeIcon, url: '#', label: 'Buy Me a Coffee', color: 'from-yellow-400 to-orange-500' }
+    { icon: GithubIcon, url: 'https://github.com/kevinkenfack', label: 'GitHub', color: 'from-green-400 to-green-600' },
+    { icon: LinkedinIcon, url: 'https://www.linkedin.com/in/kevinkenfackjoel', label: 'LinkedIn', color: 'from-blue-400 to-blue-600' },
+    { icon: TwitterIcon, url: 'https://twitter.com/kenfackdev', label: 'X (Twitter)', color: 'from-cyan-400 to-cyan-600' },
+    { icon: InstagramIcon, url: 'https://www.instagram.com/kevinkenfackjoel', label: 'Instagram', color: 'from-pink-400 to-pink-600' },
+    { icon: CoffeeIcon, url: 'https://buymeacoffee.com/kevinkenfack', label: 'Buy Me a Coffee', color: 'from-cyan-500 to-indigo-500' },
+    { icon: GlobeIcon, url: 'https://www.kevinkenfack.com/', label: 'My Bento', color: 'from-yellow-400 to-orange-500' }
   ];
 
   const portfolioProjects = [
     {
-      title: 'Application Web',
-      description: 'Solution full-stack innovative',
-      url: '#',
+      title: 'Coupy',
+      description: 'Coupy is a free open source tool to generate short links and QR codes',
+      url: 'https://coupy-tech.vercel.app/',
       icon: GlobeIcon
     },
     {
-      title: 'Dashboard Data',
-      description: 'Visualisation de données complexes',
-      url: '#',
+      title: 'Analytics Rank',
+      description: 'A simplified, intuitive analytics SaaS for tracking website traffic and user insights—no complex setup required.',
+      url: 'https://kevin.tagueacademy.com/',
       icon: BriefcaseIcon
     },
     {
-      title: 'Site Vitrine',
-      description: 'Design moderne et réactif',
-      url: '#',
+      title: 'Kmotion',
+      description: 'Create animated GIFs and videos with a drag-and-drop editor, perfect for social media and ads!',
+      url: 'https://kmotion.kevinkenfack.com/',
       icon: LinkIcon
     }
   ];
