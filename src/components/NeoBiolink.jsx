@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   GithubIcon,
@@ -10,12 +10,26 @@ import {
   BriefcaseIcon,
   LinkIcon,
   GlobeIcon,
-  ExternalLinkIcon
+  ExternalLinkIcon,
+  SunIcon,
+  MoonIcon
 } from 'lucide-react';
 
 const NeoBiolink = () => {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [activeSection, setActiveSection] = useState('profil');
+  const [theme, setTheme] = useState('dark');
+
+  // Detect system preference on initial load
+  useEffect(() => {
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDarkMode ? 'dark' : 'light');
+  }, []);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
 
   const socialLinks = [
     { icon: GithubIcon, url: 'https://github.com/kevinkenfack', label: 'GitHub', color: 'from-green-400 to-green-600' },
@@ -65,6 +79,7 @@ const NeoBiolink = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1, duration: 0.5 }}
         target="_blank"
+        rel="noopener noreferrer"
         className={`
           block w-full p-3
           rounded-xl 
@@ -97,13 +112,16 @@ const NeoBiolink = () => {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: index * 0.2, duration: 0.5 }}
-        className="
-          block bg-gray-700/50 rounded-xl p-4 
+        className={`
+          block rounded-xl p-4 
           flex items-center 
           transition-all duration-300
-          hover:bg-gray-700/70 hover:scale-105
+          hover:scale-105
           group
-        "
+          ${theme === 'dark' 
+            ? 'bg-gray-700/50 hover:bg-gray-700/70' 
+            : 'bg-gray-200/70 hover:bg-gray-300/70'}
+        `}
       >
         <motion.div 
           className="bg-gradient-to-r from-cyan-500 to-blue-600 p-3 rounded-lg mr-4"
@@ -112,10 +130,10 @@ const NeoBiolink = () => {
           <project.icon className="text-white" />
         </motion.div>
         <div className="flex-grow">
-          <h3 className="text-white font-bold">{project.title}</h3>
-          <p className="text-gray-400 text-sm">{project.description}</p>
+          <h3 className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
+          <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>{project.description}</p>
         </div>
-        <ExternalLinkIcon className="text-gray-400 group-hover:text-white transition-colors" />
+        <ExternalLinkIcon className={`transition-colors ${theme === 'dark' ? 'text-gray-400 group-hover:text-white' : 'text-gray-500 group-hover:text-gray-900'}`} />
       </motion.a>
     );
   };
@@ -140,7 +158,7 @@ const NeoBiolink = () => {
               repeatType: 'loop'
             }
           }}
-          className="absolute bg-white/10 rounded-full"
+          className={`absolute rounded-full ${theme === 'dark' ? 'bg-white/10' : 'bg-gray-300/10'}`}
           style={{
             width: `${Math.random() * 5}px`,
             height: `${Math.random() * 5}px`
@@ -163,17 +181,51 @@ const NeoBiolink = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center p-4">
+    <div 
+      className={`
+        min-h-screen flex items-center justify-center p-4 transition-colors duration-300
+        ${theme === 'dark' 
+          ? 'bg-gradient-to-br from-gray-900 to-black text-white' 
+          : 'bg-gradient-to-br from-gray-100 to-white text-gray-900'}
+      `}
+    >
       {renderParticles()}
       
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700 relative z-10 overflow-hidden"
+        className={`
+          w-full max-w-md rounded-3xl shadow-2xl border relative z-10 overflow-hidden
+          transition-all duration-300
+          ${theme === 'dark' 
+            ? 'bg-gray-800/70 backdrop-blur-xl border-gray-700' 
+            : 'bg-white/80 backdrop-blur-xl border-gray-200 shadow-lg'}
+        `}
       >
+        {/* Theme Toggle */}
+        <motion.button
+          onClick={toggleTheme}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={`
+            absolute top-4 right-4 z-20 p-2 rounded-full 
+            transition-all duration-300
+            ${theme === 'dark' 
+              ? 'bg-gray-700 text-white hover:bg-gray-600' 
+              : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}
+          `}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        </motion.button>
+
         <motion.nav 
-          className="flex border-b border-gray-700"
+          className={`
+            flex 
+            ${theme === 'dark' 
+              ? 'border-b border-gray-700' 
+              : 'border-b border-gray-200'}
+          `}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
@@ -188,7 +240,11 @@ const NeoBiolink = () => {
                 flex-1 p-3 text-center transition-all duration-300
                 ${activeSection === section.toLowerCase() 
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white' 
-                  : 'text-gray-400 hover:bg-gray-700'}
+                  : `
+                    ${theme === 'dark' 
+                      ? 'text-gray-400 hover:bg-gray-700' 
+                      : 'text-gray-600 hover:bg-gray-100'}
+                  `}
               `}
             >
               {section}
@@ -218,10 +274,10 @@ const NeoBiolink = () => {
                     rotate: 5,
                     transition: { duration: 0.3 }
                   }}
-                  className="mx-auto w-32 h-32 rounded-full border-4 border-white shadow-lg mb-4"
+                  className="mx-auto w-32 h-32 rounded-full border-4 shadow-lg mb-4"
                 />
-                <h1 className="text-3xl font-bold text-white mb-2">Kevin Kenfack</h1>
-                <p className="text-gray-300 mb-6">Création de solutions web innovantes</p>
+                <h1 className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Kevin Kenfack</h1>
+                <p className={`mb-6 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>Création de solutions web innovantes</p>
                 <div className="space-y-4">
                   {socialLinks.map(renderSocialLink)}
                 </div>
@@ -236,7 +292,7 @@ const NeoBiolink = () => {
                 animate="visible"
                 exit="hidden"
               >
-                <h2 className="text-2xl font-bold text-white mb-6 text-center">Mes Projets</h2>
+                <h2 className={`text-2xl font-bold mb-6 text-center ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Mes Projets</h2>
                 <div className="space-y-4">
                   {portfolioProjects.map(renderPortfolioProject)}
                 </div>
@@ -251,7 +307,7 @@ const NeoBiolink = () => {
                 animate="visible"
                 exit="hidden"
               >
-                <h2 className="text-2xl font-bold text-white mb-6 text-center">Me Contacter</h2>
+                <h2 className={`text-2xl font-bold mb-6 text-center ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Me Contacter</h2>
                 <div className="space-y-4">
                   {contactOptions.map(renderSocialLink)}
                 </div>
