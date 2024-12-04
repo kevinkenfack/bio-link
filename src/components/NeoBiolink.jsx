@@ -44,19 +44,22 @@ const NeoBiolink = () => {
       title: 'Coupy',
       description: 'Coupy is a free open source tool to generate short links and QR codes',
       url: 'https://coupy-tech.vercel.app/',
-      icon: LinkIcon
+      icon: LinkIcon,
+      image: '/coupy.png'
     },
     {
       title: 'Analytics Rank',
       description: 'A simplified, intuitive analytics SaaS for tracking website traffic',
       url: 'https://kevin.tagueacademy.com/',
-      icon: BriefcaseIcon
+      icon: BriefcaseIcon,
+      image: '/analytics.png'
     },
     {
       title: 'Kmotion',
       description: 'Create animated GIFs and videos with a drag-and-drop editor',
       url: 'https://kmotion.kevinkenfack.com/',
-      icon: GlobeIcon
+      icon: GlobeIcon,
+      image: '/kmotion.png'
     }
   ];
 
@@ -105,23 +108,6 @@ const NeoBiolink = () => {
     </div>
   );
 
-  const renderResourceLink = (link) => (
-    <a 
-      href={link.url} 
-      key={link.name}
-      className="group relative overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/5 p-4 transition-all duration-300 hover:bg-white/10 hover:border-white/10 hover:-translate-y-0.5"
-    >
-      <div className={`absolute inset-0 bg-gradient-to-r ${link.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-      <div className="relative flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {link.icon}
-          <span className="font-medium">{link.name}</span>
-        </div>
-        <ArrowUpRight className="w-5 h-5 text-gray-400 transition-all duration-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </div>
-    </a>
-  );
-
   return (
     <div 
       className={`
@@ -167,7 +153,7 @@ const NeoBiolink = () => {
 
       {/* Main Content */}
       <div className="relative pt-24 px-4 sm:px-6 pb-12 max-w-4xl mx-auto">
-        {/* New Achievement Card */}
+        {/* Achievement Section with Image */}
         <div className="mb-8 group">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-900/50 via-blue-900/50 to-purple-900/50 p-[1px] transition-all duration-300 hover:from-purple-600/50 hover:via-blue-600/50 hover:to-purple-600/50">
             <div className="relative bg-gray-950/95 rounded-3xl p-6 backdrop-blur-xl overflow-hidden">
@@ -177,7 +163,16 @@ const NeoBiolink = () => {
                 <div className="absolute -bottom-8 left-20 w-24 h-24 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
               </div>
 
-              <div className="relative">
+              <div className="relative group">
+                <img 
+                  src="/achievement.png" 
+                  alt="Web Development Achievement" 
+                  className="w-full rounded-2xl mb-4 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent rounded-2xl opacity-60" />
+              </div>
+
+              <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="bg-gradient-to-r from-red-500/20 to-red-500/10 text-red-500 px-4 py-1 rounded-full text-sm backdrop-blur-sm border border-red-500/10">
                     New Achievement
@@ -193,6 +188,75 @@ const NeoBiolink = () => {
                 </p>
                 <button className="bg-white/90 hover:bg-white text-gray-950 px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 transform hover:shadow-lg hover:shadow-purple-500/20">
                   View My Journey
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Portfolio Projects Section */}
+        <div className="space-y-6 mb-8">
+          <h4 className="text-sm font-medium text-gray-400 tracking-wider">MY PROJECTS</h4>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {portfolioProjects.map((project, index) => (
+              <div 
+                key={index} 
+                className="group relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 transition-all duration-300 hover:border-white/20"
+              >
+                <div className="relative">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent" />
+                </div>
+                <div className="p-4 relative z-10">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-bold">{project.title}</h3>
+                    <project.icon className="w-5 h-5 text-gray-400" />
+                  </div>
+                  <p className="text-gray-400 text-sm mb-4">{project.description}</p>
+                  <a 
+                    href={project.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    View Project 
+                    <ArrowUpRight className="ml-2 w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Course Promo Card */}
+        <div className="mb-12 group">
+          <div className="bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl p-6 backdrop-blur-sm border border-white/5 transition-all duration-300 hover:border-white/10">
+            <div className="flex flex-col sm:flex-row items-start gap-6">
+              <div className="relative flex-shrink-0">
+                <div className="w-20 h-20 rounded-2xl overflow-hidden transition-transform duration-300 group-hover:scale-105">
+                  <img src="/course.png" alt="Course" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-green-500 to-emerald-500 text-xs px-2 py-1 rounded-full">
+                  New
+                </div>
+              </div>
+              <div className="flex-1 w-full">
+                <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                  Become a Web Development Master
+                </h3>
+                <p className="text-gray-400 mb-4">
+                  Comprehensive course to elevate your web development skills
+                </p>
+                <button className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all bg-blue-500 rounded-xl hover:bg-blue-600 group">
+                  <span className="w-48 h-48 rounded rotate-[-40deg] bg-white/10 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+                  <span className="relative w-full text-left flex items-center justify-between">
+                    View Course
+                    <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </button>
               </div>
             </div>
