@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon,
   CoffeeIcon, MailIcon, BriefcaseIcon, LinkIcon,
-  GlobeIcon, ArrowUpRight, MessageSquare, Star, BookOpen
+  GlobeIcon, ArrowUpRight, MessageSquare, Star, BookOpen, Globe, Home
 } from 'lucide-react';
 
 const NeoBiolink = () => {
@@ -89,6 +89,15 @@ const NeoBiolink = () => {
                   <div className="absolute top-0 -left-4 w-24 h-24 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
                   <div className="absolute top-0 -right-4 w-24 h-24 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
                   <div className="absolute -bottom-8 left-20 w-24 h-24 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
+                </div>
+
+                <div className="relative group">
+                  <img 
+                    src="/400.png" 
+                    alt="Achievement" 
+                    className="w-full rounded-2xl mb-4 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent rounded-2xl opacity-60" />
                 </div>
 
                 <div className="relative">
@@ -200,12 +209,40 @@ const NeoBiolink = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <Star className="w-5 h-5 text-yellow-400" />
-                  <span className="font-medium">Rate us on Trustpilot</span>
+                  <Home className="w-5 h-5 text-green-400" />
+                  <span className="font-medium">My Website</span>
                 </div>
                 <ArrowUpRight className="w-5 h-5 text-gray-400 transition-all duration-300 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </a>
+          </div>
+        </div>
+
+       {/* Contact CTA Section */}
+       <div className="space-y-4 pb-8">
+          <h4 className="text-sm font-medium text-gray-400 tracking-wider">GET IN TOUCH</h4>
+          <div className="bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl p-6 backdrop-blur-sm border border-white/5">
+            <div className="flex flex-col sm:flex-row items-center gap-6">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+                  Let's Collaborate
+                </h3>
+                <p className="text-gray-400 mb-4">
+                  Interested in working together or have a project in mind? 
+                  Drop me a message and let's create something amazing.
+                </p>
+              </div>
+              <a 
+                href="mailto:contact@kevinkenfack.com"
+                className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all bg-blue-500 rounded-xl hover:bg-blue-600 group"
+              >
+                <span className="w-48 h-48 rounded rotate-[-40deg] bg-white/10 absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
+                <span className="relative w-full text-left flex items-center justify-between">
+                  Contact Me
+                  <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
