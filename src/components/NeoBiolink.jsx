@@ -91,14 +91,7 @@ const NeoBiolink = () => {
                   <div className="absolute -bottom-8 left-20 w-24 h-24 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
                 </div>
 
-                <div className="relative group">
-                  <img 
-                    src="/400.png" 
-                    alt="Achievement" 
-                    className="w-full rounded-2xl mb-4 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent rounded-2xl opacity-60" />
-                </div>
+                
 
                 <div className="relative">
                   <div className="flex items-center gap-4 mb-4">
@@ -107,6 +100,15 @@ const NeoBiolink = () => {
                     </div>
                     <div className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                   </div>
+
+                  <div className="relative group">
+                  <img 
+                    src="/400.png" 
+                    alt="Achievement" 
+                    className="w-full rounded-2xl mb-4 object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/50 to-transparent rounded-2xl opacity-60" />
+                </div>
 
                   <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
                     Innovating Web Solutions
